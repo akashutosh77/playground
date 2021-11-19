@@ -1,0 +1,17 @@
+<div class="container">
+  <h3>Angular FormArray Example</h3>
+  <form [formGroup] = "angForm" (submit)="onFormSubmit()">
+    <button type="button" (click)="addNameField()" class="btn btn-success" [ngClass] = "'pad'">Add More Names</button>
+    <div formArrayName="names">
+      <div *ngFor="let name of names.controls; index as idx" class="form-group">
+        <input [formControlName]="idx" placeholder="Enter a Name" class="form-control">
+        <label *ngIf="name.invalid" [ngClass] = "'error'"> Name is required. </label>
+
+        <button (click)="deleteNameField(idx)" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+  </form>
+  </div>
